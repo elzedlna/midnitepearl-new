@@ -12,7 +12,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-        <style>
+        <style>bg-[#FAF7EE]
             body { font-family: 'Lato', sans-serif; }
             h1, h2, h3, h4, h5 { font-family: 'Inria Serif', serif; }
         </style>
@@ -20,7 +20,7 @@
         <title>Static Page</title>
     </head>
 
-    <body class="bg-[#FAF7EE] min-h-screen">
+    <body class=" min-h-screen">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row">
                 <!-- Hide sidebar on mobile, show on desktop -->

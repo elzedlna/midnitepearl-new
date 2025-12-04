@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,15 @@ Route::middleware('auth')->group(function () {
 
 //STATIC PAGES
 Route::get('list-products', function () {return view('list-products');});
-Route::get('view-collection', function () {
-    return view('view-collection');
-})->name('view-collection');
+Route::get('list-products', function () {
+    return view('list-products');
+})->name('list-products');
+
+
+//Product Route (Individually)
+Route::get('/products/single-item', function () {
+    return view('products.single-item');
+});
 
 
 
