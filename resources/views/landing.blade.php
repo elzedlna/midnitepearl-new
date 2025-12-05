@@ -53,22 +53,21 @@
                     </div>
                 </main>
             </div>
+        </div>
 
-            <section class="w-full max-w-screen-xl mx-auto mt-16">
+            <section class=" max-w-full mx-auto mt-16">
                 <div class="grid md:grid-cols-[2fr_1fr] mb-4">
                     <div class="h-80 md:h-96 overflow-hidden">
                         <img
-                            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80"
-                            alt="Pearl on sand"
-                            class="w-full h-full object-cover"
-                        />
+                        src="{{ asset('images/seashell.jpg') }}"    
+                        class="w-full h-full object-cover"
+                    >
                     </div>
 
                     <div class="relative h-80 md:h-96">
-                        <img
-                            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80"
-                            alt="Water texture"
-                            class="w-full h-full object-cover"
+                         <img
+                        src="{{ asset('images/sea-3.jpg') }}"    
+                        class="w-full h-full object-cover"
                         />
 
                         <div class="absolute inset-0 flex items-end">
@@ -89,7 +88,7 @@
             <section class="bg-cream-50 py-12" style="background-color:#fbf6ec;">
                 <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-serif">
                     {{-- Heading --}}
-                    <h2 class="text-xl font-semibold tracking-widest text-black mb-6">SHOP NOW</h2>
+                    <h2 class="font-serif text-xl text-black mb-6">SHOP NOW</h2>
 
                     {{-- Images grid --}}
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
@@ -137,7 +136,7 @@
             {{-- Carousel (Alpine + Tailwind) --}}
             <section class="mt-10 py-10">
                 {{-- Heading --}}
-                <h2 class="text-xl font-bold tracking-widest text-black text-center mb-6">Our Collections</h2>
+                <h2 class="text-xl font-serif text-black text-center mb-6">Our Collections</h2>
                 <div x-data="carousel()" x-init="init()" x-on:mouseenter="pause()" x-on:mouseleave="play()" class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="relative overflow-hidden rounded-lg">
                         {{-- Slides wrapper (flex, will be translated) --}}
@@ -154,7 +153,7 @@
                                             <div class="max-w-xl text-left text-white font-serif">
                                                 <h3 class="text-lg sm:text-xl md:text-2xl font-semibold" x-text="slide.title"></h3>
                                                 <p class="mt-2 text-sm sm:text-base" x-text="slide.subtitle"></p>
-                                                <a :href="slide.href" class="inline-block mt-4 bg-white text-gray-900 px-4 py-2 rounded shadow-sm text-sm">Shop now</a>
+                                                <a :href="slide.href" class="inline-block mt-4 bg-white text-gray-900 px-4 py-2 rounded shadow-sm text-sm">Shop Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -184,36 +183,31 @@
                 </div>
             </section>
 
-            {{-- Hero with overlay (reduced height, responsive) --}}
-            <section class="my-10 w-screen-full">
+            <section class="w-screen-full">
                 <div class="relative overflow-hidden rounded-md">
-                    {{-- Background image (img + object-cover keeps it responsive & accessible) --}}
                     <img
-                        src="{{ asset('images/landing/hero.jpg') }}"    
+                        src="{{ asset('images/seashore-with-quiet-sea.jpg') }}"    
                         alt="The Art of Natural Elegance"
                         class="w-full h-44 sm:h-56 md:h-72 lg:h-80 object-cover"
                     >
 
-                    {{-- Overlay: centered content --}}
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="max-w-screen-xl mx-auto text-center px-4 sm:px-6 lg:px-8 font-serif text-neutral-900/90">
-                            <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-3">
+                    {{-- Overlay --}}
+                    <div class="absolute inset-0 bg-[#F3EBDC]/30 pointer-events-none z-0"></div>
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                        <div class="text-black max-w-screen-xl mx-auto text-center px-4 sm:px-6 lg:px-8 font-serif text-neutral-900/90">
+                            <h2 class="font-serif sm:text-lg md:text-xl lg:text-2xl mb-3">
                                 The Art of Natural Elegance
                             </h2>
 
-                            <p class="text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+                            <p class="font-sans text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto">
                                 True beauty doesn't shout — it glows.
                                 Each Lombok pearl is chosen for its natural luster, untouched by artificial perfection,
                                 bringing you jewellery that feels pure and timeless.
                             </p>
                         </div>
                     </div>
-
-                    {{-- subtle overlay gradient at bottom if you want contrast (optional) --}}
-                    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/90 to-transparent pointer-events-none"></div>
                 </div>
             </section>
-        </div>
         @include('components.newsletter')
         @include('components.footer')
     </body>
