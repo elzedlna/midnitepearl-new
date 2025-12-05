@@ -28,17 +28,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Admin Routes
+Route::prefix('admin')->group(function () {
+    //Guest routes
+    Route::middleware('guest:admin')->group(function () {
+        Route::get('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
+        Route::post('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
+    });
+
+    //Protected routes 
+    Route::middleware('admin')->group(function () {
+        Route::get('/home', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.home');
+        Route::post('/logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
+    });
+});
+
 //STATIC PAGES
 Route::get('list-products', function () {return view('list-products');});
-Route::get('list-products', function () {
-    return view('list-products');
-})->name('list-products');
+Route::get('list-products', function () {return view('list-products');})->name('list-products');
 
 
 //Product Route (Individually)
-Route::get('/products/single-item', function () {
-    return view('products.single-item');
-});
+Route::get('/products/single-item', function () {return view('products.single-item');});
+
+//Admin Home Page
+Route::get('/admin/home', function () {return view('admin.home');});
+
 
 
 

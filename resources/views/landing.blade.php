@@ -20,7 +20,7 @@
         <title>Static Page</title>
     </head>
 
-    <body class=" min-h-screen">
+    <body class="bg-[#FAF7EE] min-h-screen">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row">
                 <!-- Hide sidebar on mobile, show on desktop -->

@@ -1,5 +1,4 @@
 @include('components.nav-item')
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,6 +142,56 @@
                 </div>
             </section>
 
+            {{-- Carousel (Alpine + Tailwind) --}}
+            <section class="mt-10 py-10">
+                {{-- Heading --}}
+                <h2 class="text-xl font-bold tracking-widest text-black text-center mb-6">Our Collections</h2>
+                <div x-data="carousel()" x-init="init()" x-on:mouseenter="pause()" x-on:mouseleave="play()" class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="relative overflow-hidden rounded-lg">
+                        {{-- Slides wrapper (flex, will be translated) --}}
+                        <div
+                            class="flex transition-transform duration-700 ease-in-out"
+                            :style="`transform: translateX(-${current * (100 / slides.length)}%); width: calc(${slides.length} * 100%);`"
+                        >
+                            <template x-for="(slide, i) in slides" :key="i">
+                                <div class="relative" :style="`width: 100%;`">
+                                    <img :src="slide.src" :alt="slide.title" class="w-full h-56 sm:h-72 md:h-96 object-cover">
+                                    {{-- overlay --}}
+                                    <div class="absolute inset-0 flex items-end">
+                                        <div class="w-full bg-gradient-to-t from-black/50 to-transparent p-4 sm:p-6 md:p-8">
+                                            <div class="max-w-xl text-left text-white font-serif">
+                                                <h3 class="text-lg sm:text-xl md:text-2xl font-semibold" x-text="slide.title"></h3>
+                                                <p class="mt-2 text-sm sm:text-base" x-text="slide.subtitle"></p>
+                                                <a :href="slide.href" class="inline-block mt-4 bg-white text-gray-900 px-4 py-2 rounded shadow-sm text-sm">Shop now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        {{-- Prev / Next controls --}}
+                        <button @click="prev()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white/100 rounded-full p-2 shadow hidden sm:inline-flex">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <button @click="next()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white/100 rounded-full p-2 shadow hidden sm:inline-flex">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+
+                        {{-- Indicators --}}
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2">
+                            <template x-for="(slide, i) in Math.ceil(slides.length / slidesToShow)" :key="i">
+                                <button
+                                    @click="goTo(i)"
+                                    :class="{'bg-white': Math.floor(current / slidesToShow) === i, 'bg-white/50': Math.floor(current / slidesToShow) !== i }"
+                                    class="w-8 h-1 rounded-full transition-colors"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
     {{-- JS --}}
     <script>
         let qty = 1;
@@ -164,6 +213,45 @@
             msg.classList.remove('hidden');
             setTimeout(() => msg.classList.add('hidden'), 1500);
         };
+    </script>
+
+    <script>
+        function carousel(){
+            return {
+                slidesToShow: 1,            
+                current: 0,
+                slides: [
+                    { src: '{{ asset("images/landing/carousel1.jpg") }}', title: 'Title One', subtitle: 'Short description one', href: '#' },
+                    { src: '{{ asset("images/landing/carousel2.jpg") }}', title: 'Title Two', subtitle: 'Short description two', href: '#' },
+                ],
+                timer: null,
+                init(){
+                    const update = () => {
+                        const w = window.innerWidth;
+                        this.slidesToShow = 1; 
+                    };
+                    update();
+                    window.addEventListener('resize', update);
+                    this.play();
+                },
+                play(){
+                    this.pause();
+                    this.timer = setInterval(()=>{ this.next() }, 4000);
+                },
+                pause(){
+                    if(this.timer) { clearInterval(this.timer); this.timer = null; }
+                },
+                prev(){
+                    this.current = (this.current - 1 + this.slides.length) % this.slides.length;
+                },
+                next(){
+                    this.current = (this.current + 1) % this.slides.length;
+                },
+                goTo(index){
+                    this.current = index * (this.slidesToShow);
+                }
+            }
+        }
     </script>
         @include('components.newsletter')
         @include('components.footer')
