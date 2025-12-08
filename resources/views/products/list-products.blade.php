@@ -17,7 +17,7 @@
             h1, h2, h3, h4, h5 { font-family: 'Inria Serif', serif; }
         </style>
 
-        <title>Static Page</title>
+        <title>Midnite Pearl</title>
     </head>
 
     <body class="bg-[#FFFCF1] min-h-screen">

@@ -18,7 +18,7 @@
         .square { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; }
     </style>
 
-    <title>Static Page</title>
+    <title>Midnite Pearl</title>
 </head>
 
 <body>
@@ -55,17 +55,19 @@
 
             {{-- Quantity / Wishlist / Cart --}}
             <div class="flex items-center gap-4 mt-6">
-                <div class="inline-flex items-center border border-gray-300 rounded">
-                    <button id="dec" class="px-4 py-2 text-lg">−</button>
+                <div class="flex items-center border border-gray-300 rounded">
+                    <x-button variant="ghost" id="dec">−</x-button>
                     <div id="qty" class="px-6">1</div>
-                    <button id="inc" class="px-4 py-2 text-lg">+</button>
+                    <x-button variant="ghost" id="inc">+</x-button>
                 </div>
 
-                <button id="wish" class="border border-gray-300 rounded px-4 py-2" type="button">♡</button>
+                <x-button variant="outline" class="text-sm">♡</x-button>
 
-                <button id="add" class="ml-auto bg-[#4bc9bd] hover:bg-[#38b3a9] text-white px-6 py-3 rounded">
-                    Add to cart
-                </button>
+                <div class="ml-auto">
+                    <x-button>
+                        Add to cart
+                    </x-button>
+                </div>
             </div>
 
             <div id="msg" class="mt-4 text-sm text-green-700 hidden"></div>
