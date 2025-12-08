@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Admin Home Page
+Route::get('/admin/home', function () {return view('admin.home');});
+
 //Admin Routes
 Route::prefix('admin')->group(function () {
     //Guest routes
@@ -43,17 +46,10 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-//STATIC PAGES
-Route::get('list-products', function () {return view('list-products');});
-Route::get('list-products', function () {return view('list-products');})->name('list-products');
 
-
-//Product Route (Individually)
+//Route for Category: Products
 Route::get('/products/single-item', function () {return view('products.single-item');});
-
-//Admin Home Page
-Route::get('/admin/home', function () {return view('admin.home');});
-
+Route::get('/products/list-products', function () {return view('products.list-products');});
 
 
 

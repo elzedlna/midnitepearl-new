@@ -20,7 +20,7 @@
         <title>Static Page</title>
     </head>
 
-    <body class="bg-[#FAF7EE] min-h-screen">
+    <body class="bg-[#FFFCF1] min-h-screen">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row">
                 <!-- Hide sidebar on mobile, show on desktop -->
@@ -53,32 +53,34 @@
                     </div>
                 </main>
             </div>
-            
-            @livewire('product-list') 
 
-            <section class="grid md:grid-cols-2 mb-16 h-96 md:h-[500px]">
+            <div class="py-16">
+                @livewire('product-list')
+            </div>
+        </div>
+        
+            <section class="max-w-screen-full grid md:grid-cols-2 h-96 md:h-[500px]">
                 <!-- Left side - Text content -->
-                <div class="bg-[#7DD4CA] p-8 md:p-16 flex items-center rounded-l-lg">
+                <div class="bg-[#7DD4CA] p-8 md:p-16 flex items-center">
                     <div class="max-w-md">
-                        <h2 class="font-serif text-3xl md:text-4xl text-white mb-6" style="font-family: 'Inria Serif', serif;">
+                        <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">
                             The Art of Natural Elegance
                         </h2>
-                        <p class="text-white leading-relaxed text-sm md:text-base" style="font-family: 'Lato', sans-serif;">
+                        <p class="text-white font-sans text-l">
                             True beauty doesn't shout—it glows. Each Lombok pearl is chosen for its natural luster, untouched by artificial perfection, bringing you jewelry that feels pure and timeless.
                         </p>
                     </div>
                 </div>
 
                 <!-- Right side - Single Combined Image -->
-                <div class="overflow-hidden rounded-r-lg">
+                <div class="overflow-hidden">
                     <img 
-                        src="{{ asset('images/list-products-image.png') }}"
+                        src="{{ asset('images/list-products-grid.jpg') }}"
                         alt="Pearl jewelry"
                         class="w-full h-full object-cover"
                     >
                 </div>
             </section>
-        </div>
         @include('components.newsletter')
         @include('components.footer')
     </body>

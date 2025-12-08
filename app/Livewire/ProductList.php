@@ -47,9 +47,9 @@ class ProductList extends Component
                 $query->where('category', $this->category);
             })
             ->orderBy($this->sortBy, $this->sortDirection)
-            ->paginate(8); // 8 items = 4 per row on desktop, 2 per row on mobile
+            ->paginate(8);
 
-        return view('livewire.product-list', [
+        return view('livewire.components.product-list', [
             'products' => $products
         ]);
     }

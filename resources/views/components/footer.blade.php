@@ -1,99 +1,77 @@
 {{-- resources/views/components/footer.blade.php --}}
-<footer class="bg-[#f5f3e9] text-neutral-800 font-serif">
-    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {{-- Main Grid: 6 equal columns on desktop, 2 on mobile --}}
-        <div class="flex flex-wrap justify-around gap-y-8 text-center">
+<footer class="bg-white text-neutral-700 font-sans">
+  <div class="max-w-screen-xl mx-auto px-6 md:px-8 py-12">
+    {{-- Top: links + newsletter --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+      {{-- Left: Customer Care --}}
+      <div class="font-serif">
+        <h3 class="text-xs tracking-widest text-neutral-500 mb-6">CUSTOMER CARE</h3>
 
-            {{-- Column 1: Pearls --}}
-            <div class="w-1/2 md:w-auto">
-                <h4 class="text-base font-semibold mb-3">Pearls</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:underline">All products</a></li>
-                    <li><a href="#" class="hover:underline">Bracelets</a></li>
-                    <li><a href="#" class="hover:underline">Brooches</a></li>
-                    <li><a href="#" class="hover:underline">Best Sellers</a></li>
-                </ul>
-            </div>
+        <ul class="space-y-4 text-neutral-500">
+          <li><a href="#" class="hover:text-neutral-700">Online Orders</a></li>
+          <li><a href="#" class="hover:text-neutral-700">Shipping</a></li>
+          <li><a href="#" class="hover:text-neutral-700">Exchanges & Returns</a></li>
+          <li><a href="#" class="hover:text-neutral-700">OM Membership Programme</a></li>
+          <li><a href="#" class="hover:text-neutral-700">Personal Shopping</a></li>
+        </ul>
+      </div>
 
-            {{-- Column 2: Services --}}
-            <div class="w-1/2 md:w-auto">
-                <h4 class="text-base font-semibold mb-3">Services</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:underline">About Us</a></li>
-                    <li><a href="#" class="hover:underline">Order Tracking</a></li>
-                    <li><a href="#" class="hover:underline">My Account</a></li>
-                    <li><a href="#" class="hover:underline">Refund Policy</a></li>
-                </ul>
-            </div>
+      {{-- Right: Newsletter --}}
+      <div>
+        <h3 class="font-serif text-xs tracking-widest text-neutral-500 mb-6">SIGN UP FOR THE LOW DOWN</h3>
 
-            {{-- Column 3: Logo + Brand + Socials --}}
-            <div class="w-1/2 md:w-auto flex flex-col items-center">
-               
+        <p class="text-neutral-400 mb-6">
+          All access to news, previews and perks straight to your inbox.
+        </p>
 
-                {{-- Brand Name --}}
-                <a class="mb-4 flex items-center flex-shrink-0" href="{{ url('/') }}">
-                    <span class="sr-only">Home</span>
-                    <img 
-                        src="{{ asset('images/midnitepearl-logo.png') }}"
-                        alt="Home"
-                        class="w-auto h-4"
-                    >
-                </a>
+        <form action="#" method="POST" class="max-w-lg" onsubmit="event.preventDefault();">
+  <div class="flex flex-col sm:flex-row gap-3">
+    <label for="newsletter-email" class="sr-only">Email address</label>
 
-                {{-- Social icons --}}
-                <div class="flex items-center gap-3">
-                    {{-- Instagram --}}
-                    <a href="#" aria-label="Instagram" class="p-2 border border-gray-300 rounded hover:bg-emerald-50">
-                        <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
+    <input
+      id="newsletter-email"
+      name="email"
+      type="email"
+      placeholder="Enter your email address"
+      class="w-full border border-neutral-200 rounded-md px-4 py-3 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-200"
+    >
 
-                    {{-- TikTok --}}
-                    <a href="#" aria-label="TikTok" class="p-2 border border-gray-300 rounded hover:bg-emerald-50">
-                        <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                    </a>
+    <button
+      type="submit"
+      class="mt-2 sm:mt-0 inline-block px-8 py-3 bg-[#F1E1D8] text-neutral-700 rounded-md tracking-widest text-sm font-medium hover:brightness-95"
+    >
+      SUBSCRIBE
+    </button>
+  </div>
+</form>
 
-                    {{-- Email --}}
-                    <a href="mailto:hello@example.com" aria-label="Email" class="p-2 border border-gray-300 rounded hover:bg-emerald-50">
-                        <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            {{-- Column 4: Contact Us --}}
-            <div class="w-1/2 md:w-auto">
-                <h4 class="text-base font-semibold mb-3">Contact Us</h4>
-            </div>
-
-            {{-- Column 5: Blog --}}
-            <div class="w-1/2 md:w-auto">
-                <h4 class="text-base font-semibold mb-3">Blog</h4>
-            </div>
-
-            {{-- Column 6: FAQ --}}
-            <div class="w-1/2 md:w-auto">
-                <h4 class="text-base font-semibold mb-3">FAQ</h4>
-            </div>
-
-        </div>
-
-        {{-- BOTTOM ROW --}}
-        <div class="mt-8 border-t border-gray-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <button class="text-xs px-3 py-1 border border-gray-300 rounded hover:bg-emerald-50">RM MYR</button>
-            </div>
-
-            <div class="text-sm">
-                © Midnite Pearl {{ date('Y') }}
-            </div>
-        </div>
+      </div>
     </div>
+
+    {{-- Divider --}}
+    <div class="border-t border-neutral-100 mt-10 pt-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        {{-- Left: copyright / brand --}}
+        <div class="text-sm text-neutral-400 flex items-center gap-4">
+          <span class="text-xs">©</span>
+          <span class="font-serif tracking-wide text-neutral-700">MidnitePearl</span>
+        </div>
+
+        {{-- Right: payment icons (stacked on mobile) --}}
+        <div class="flex items-center gap-3">
+          {{-- small helper so icons stay aligned and accessible --}}
+          <nav class="flex items-center gap-3" aria-label="Payment methods">
+            <img src="{{ asset('images/payments/amex.png') }}" alt="American Express" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/applepay.png') }}" alt="Apple Pay" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/bancontact.png') }}" alt="Bancontact" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/gpay.png') }}" alt="Google Pay" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/mastercard.png') }}" alt="Mastercard" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/shop.png') }}" alt="Shop" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/unionpay.png') }}" alt="UnionPay" class="h-8 w-auto">
+            <img src="{{ asset('images/payments/visa.png') }}" alt="Visa" class="h-8 w-auto">
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
