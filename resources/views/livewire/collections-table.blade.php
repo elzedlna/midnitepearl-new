@@ -1,8 +1,8 @@
 <div class="bg-white border border-gray-200">
     <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-        <h3 class="font-semibold text-gray-800">Categories</h3>
+        <h3 class="font-semibold text-gray-800">Collections</h3>
         <button wire:click="openCreateModal" class="px-4 py-2 text-sm text-white bg-teal-600 hover:bg-teal-700 rounded-md">
-            Add Category
+            Add Collection
         </button>
     </div>
 
@@ -19,30 +19,30 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @forelse($categories as $category)
+                @forelse($collections as $collection)
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {{ $category->name }}
+                        {{ $collection->name }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        {{ $category->slug }}
+                        {{ $collection->slug }}
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-600">
-                        {{ Str::limit($category->description, 50) }}
+                        {{ Str::limit($collection->description, 50) }}
                     </td>
                     {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {{ $category->products->count() }}
+                        {{ $collection->products->count() }}
                     </td> --}}
                     <td class="px-6 py-4 whitespace-nowrap">
-                        @if($category->is_active)
+                        @if($collection->is_active)
                             <span class="px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full">Active</span>
                         @else
                             <span class="px-2 py-1 text-xs font-medium text-red-700 bg-red-100 rounded-full">Inactive</span>
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm space-x-2">
-                        <button wire:click="openEditModal({{ $category->id }})" class="text-teal-600 hover:text-teal-800 font-medium">Edit</button>
-                        <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                        <button wire:click="openEditModal({{ $collection->id }})" class="text-teal-600 hover:text-teal-800 font-medium">Edit</button>
+                        <form action="{{ route('admin.collections.destroy', $collection) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this collection?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 hover:text-red-800 font-medium">Delete</button>
@@ -52,7 +52,7 @@
                 @empty
                 <tr>
                     <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">
-                        No categories found. <a href="{{ route('admin.categories.create') }}" class="text-teal-600 hover:text-teal-800">Create one now</a>
+                        No collections found. <a href="{{ route('admin.collections.create') }}" class="text-teal-600 hover:text-teal-800">Create one now</a>
                     </td>
                 </tr>
                 @endforelse
@@ -60,9 +60,9 @@
         </table>
     </div>
 
-    @if($categories->hasPages())
+    @if($collections->hasPages())
     <div class="px-6 py-4 border-t border-gray-200">
-        {{ $categories->links() }}
+        {{ $collections->links() }}
     </div>
     @endif
 
@@ -72,11 +72,12 @@
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" wire:click="closeModal"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
                 <form wire:submit.prevent="save">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">
-                            {{ $editMode ? 'Edit Category' : 'Create Category' }}
+                            {{ $editMode ? 'Edit Collection' : 'Create Collection' }}
                         </h3>
 
                         <div class="mb-4">
