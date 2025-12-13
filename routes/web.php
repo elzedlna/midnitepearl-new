@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CollectionController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -39,10 +43,12 @@ Route::prefix('admin')->group(function () {
         Route::post('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
     });
 
-    //Protected routes 
-    Route::middleware('admin')->group(function () {
-        Route::get('/home', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.home');
-        Route::post('/logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
+    //Protected routes
+    Route::name('admin.')->middleware('admin')->group(function () {
+        Route::get('/home', [DashboardController::class, 'index'])->name('home');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('collections', CollectionController::class);
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 });
 
