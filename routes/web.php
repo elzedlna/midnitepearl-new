@@ -3,10 +3,10 @@
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CollectionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +48,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/home', [DashboardController::class, 'index'])->name('home');
         Route::resource('categories', CategoryController::class);
         Route::resource('collections', CollectionController::class);
+        Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 });

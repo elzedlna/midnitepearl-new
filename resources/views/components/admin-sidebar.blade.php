@@ -12,7 +12,7 @@
                     <i class="fas fa-th-large"></i>
                     <span class="sidebar-text whitespace-nowrap">Dashboard</span>
                 </a>
-                <a href="#" class="flex items-center gap-2 px-6 py-3 {{ request()->routeIs('admin.inventory.*') ? 'text-teal-600 bg-teal-50 border-r-4 border-teal-600 font-medium' : 'text-gray-600 hover:bg-gray-50' }}">
+                <a href="{{ route('admin.products.index') }}" class="flex items-center gap-2 px-6 py-3 {{ request()->routeIs('admin.products.*') ? 'text-teal-600 bg-teal-50 border-r-4 border-teal-600 font-medium' : 'text-gray-600 hover:bg-gray-50' }}">
                     <i class="fas fa-box"></i>
                     <span class="sidebar-text whitespace-nowrap">Products</span>
                 </a>

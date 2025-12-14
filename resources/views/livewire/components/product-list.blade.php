@@ -5,63 +5,71 @@
             {{-- Heading --}}
             <h2 class="text-xl md:text-2xl font-serif text-[#333] mb-12 text-center">All Products</h2>
 
-            {{-- Search, Filter, Sort Bar --}}
-            <div class="mb-12 flex flex-col md:flex-row gap-4 items-center">
-                {{-- Search --}}
-                <div class="w-full md:flex-1 relative">
-                    <input 
-                        type="text" 
-                        wire:model.live.debounce.300ms="search"
-                        placeholder="Search..." 
-                        class="w-full px-5 py-3 border-2 border-[#7DD4CA] rounded-full 
-                        focus:outline-none focus:ring-2 focus:ring-[#7DD4CA] focus:ring-opacity-50
-                        font-sans text-base"
+           {{-- Search, Filter, Sort Bar --}}
+        <div class="mb-12 flex flex-col md:flex-row gap-4 items-center justify-center">
+            {{-- Search --}}
+            <div class="w-full md:w-64 relative">
+                <input 
+                    type="text" 
+                    wire:model.live.debounce.300ms="search"
+                    placeholder="Search" 
+                    class="w-full px-5 py-2.5 border border-black bg-transparent
+                    focus:outline-none focus:border-gray-600
+                    font-sans text-sm placeholder-gray-500"
+                >
+                <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" 
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+
+            {{-- Filter by Category --}}
+            <div class="w-full md:w-64 relative">
+                <select 
+                    wire:model.live="category"
+                    class="w-full px-5 py-2.5 pr-10 border border-black bg-transparent
+                    focus:outline-none focus:border-gray-600
+                    font-sans text-sm appearance-none cursor-pointer"
+                >
+                    <option value="">All Categories</option>
+                    <option value="bracelets">Bracelets</option>
+                    <option value="necklaces">Necklaces</option>
+                    <option value="rings">Rings</option>
+                    <option value="earrings">Earrings</option>
+                </select>
+                <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" 
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+
+            {{-- Sort & Direction Combined --}}
+            <div class="w-full md:w-64 flex gap-2">
+                <div class="flex-1 relative">
+                    <select 
+                        wire:model.live="sortBy"
+                        class="w-full h-full px-5 py-2.5 pr-10 border border-black bg-transparent
+                        focus:outline-none focus:border-gray-600
+                        font-sans text-sm appearance-none cursor-pointer"
                     >
-                    <svg class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7DD4CA] pointer-events-none" 
-                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
+                        <option value="name">Sort By</option>
+                        <option value="price">Price</option>
+                        <option value="created_at">Newest</option>
+                    </select>
+                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" 
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </div>
 
-                {{-- Filter by Category --}}
-                <div class="w-full md:w-auto">
-                    <select 
-                        wire:model.live="category"
-                        class="w-full px-5 py-3 border-2 border-[#7DD4CA] rounded-lg 
-                        focus:outline-none focus:ring-2 focus:ring-[#7DD4CA] focus:ring-opacity-50
-                        font-sans text-base bg-white cursor-pointer"
-                    >
-                        <option value="">All Categories</option>
-                        <option value="bracelets">Bracelets</option>
-                        <option value="necklaces">Necklaces</option>
-                        <option value="rings">Rings</option>
-                        <option value="earrings">Earrings</option>
-                    </select>
-                </div>
-
-                {{-- Sort & Direction Combined --}}
-                <div class="w-full md:w-auto flex gap-2">
-                    <select 
-                        wire:model.live="sortBy"
-                        class="flex-1 md:w-auto px-5 py-3 border-2 border-[#7DD4CA] 
-                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7DD4CA] 
-                        focus:ring-opacity-50 font-sans text-base bg-white cursor-pointer"
-                    >
-                        <option value="name">Sort: Name</option>
-                        <option value="price">Sort: Price</option>
-                        <option value="created_at">Sort: Newest</option>
-                    </select>
-
-                    <button 
-                        wire:click="sortBy('{{ $sortBy }}')"
-                        class="px-4 py-3 bg-[#7DD4CA] text-white rounded-lg 
-                        hover:bg-[#6BC4BA] transition-colors duration-200 font-semibold"
-                    >
-                        {{ $sortDirection === 'asc' ? '↑' : '↓' }}
-                    </button>
-                </div>
+                <button 
+                    wire:click="sortBy('{{ $sortBy }}')"
+                    class="w-12 h-[42px] flex items-center justify-center bg-transparent border border-black text-black hover:bg-black hover:text-white transition-colors">
+                    {{ $sortDirection === 'asc' ? '↑' : '↓' }}
+                </button>
             </div>
+        </div>
 
             {{-- Products Grid: 3 columns desktop, 2 columns mobile --}}
             <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">

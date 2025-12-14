@@ -3,7 +3,7 @@
   use Illuminate\Support\Facades\Route;
 @endphp
 
-<nav class="w-full bg-white border-b border-gray-100">
+<nav class="w-full transparent border-b border-gray-500">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       {{-- Mobile: hamburger + brand (hamburger shows only on small screens) --}}

@@ -23,14 +23,7 @@
     <body class="bg-[#FFFCF1] min-h-screen">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row">
-                <!-- Hide sidebar on mobile, show on desktop -->
-                <aside class="hidden md:block w-56 pt-16 space-y-6 text-[#333]">
-                    <a class="block text-lg font-serif" href="#">About Us</a>
-                    <a class="block text-lg font-serif" href="#">Pearls</a>
-                    <a class="block text-lg font-serif" href="#">Best Sellers</a>
-                    <a class="block text-lg font-serif" href="#">Contact</a>
-                </aside>
-
+                <x-sidebar />
                 <main class="flex-1 pt-6 md:pt-12 md:pl-10">
                     <div class="max-w-4xl m-auto">
                         <img 
@@ -40,17 +33,7 @@
                         >
                     </div>
 
-                    <div class="mt-6 px-4 md:px-8">
-                        <h2 class="font-serif text-xl md:text-3xl text-[#333]">
-                            Born from Lombok's Waters
-                        </h2>
-
-                        <p class="font-sans mt-3 text-sm md:text-base text-gray-700 leading-relaxed">
-                            Each pearl tells a story of the sea. <br>
-                            Hand-harvested from the crystal waters of Lombok, our pearls are nurtured naturally,
-                            reflecting the calm beauty of the island and the artistry of its people.
-                        </p>
-                    </div>
+                   
                 </main>
             </div>
 
@@ -63,10 +46,10 @@
                 <!-- Left side - Text content -->
                 <div class="bg-[#7DD4CA] p-8 md:p-16 flex items-center">
                     <div class="max-w-md">
-                        <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">
+                        <h2 class="font-serif text-xl md:text-2xl text-white mb-6">
                             The Art of Natural Elegance
                         </h2>
-                        <p class="text-white font-sans text-l">
+                        <p class="text-white font-sans text-xs md:text-base">
                             True beauty doesn't shout—it glows. Each Lombok pearl is chosen for its natural luster, untouched by artificial perfection, bringing you jewelry that feels pure and timeless.
                         </p>
                     </div>
@@ -81,7 +64,6 @@
                     >
                 </div>
             </section>
-        @include('components.newsletter')
         @include('components.footer')
     </body>
 </html>

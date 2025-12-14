@@ -23,14 +23,7 @@
     <body class="bg-[#FAF7EE] min-h-screen">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row">
-                <!-- Hide sidebar on mobile, show on desktop -->
-                <aside class="hidden md:block w-56 pt-16 space-y-6 text-[#333]">
-                    <a class="block text-lg font-serif" href="#">About Us</a>
-                    <a class="block text-lg font-serif" href="#">Pearls</a>
-                    <a class="block text-lg font-serif" href="#">Best Sellers</a>
-                    <a class="block text-lg font-serif" href="#">Contact</a>
-                </aside>
-
+                <x-sidebar />
                 <main class="flex-1 pt-6 md:pt-12 md:pl-10">
                     <div class="max-w-4xl m-auto">
                         <img 
@@ -41,11 +34,11 @@
                     </div>
                     
                     <div class="mt-6 px-4 md:px-8">
-                        <h2 class="font-serif text-xl md:text-3xl text-[#333]">
+                        <h2 class="font-serif text-xl md:text-2xl text-[#333]">
                             Born from Lombok's Waters
                         </h2>
 
-                        <p class="font-sans mt-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                        <p class="font-sans mt-3 text-xs md:text-base text-gray-600 leading-relaxed">
                             Each pearl tells a story of the sea. <br>
                             Hand-harvested from the crystal waters of Lombok, our pearls are nurtured naturally,
                             reflecting the calm beauty of the island and the artistry of its people.
@@ -75,7 +68,7 @@
                                 <h3 class="font-serif text-xl md:text-2xl text-[#2d2d2d] leading-tight">
                                     Locally Harvested, Globally Admired
                                 </h3>
-                                <p class="font-sans mt-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                                <p class="font-sans mt-3 text-xs md:text-base text-gray-600 leading-relaxed">
                                     Our pearls are cultivated and selected by local artisans in Lombok. Every piece
                                     carries the warmth of their craftsmanship and the serenity of the ocean it came from.
                                 </p>
@@ -88,7 +81,7 @@
             <section class="bg-cream-50 py-12" style="background-color:#fbf6ec;">
                 <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-serif">
                     {{-- Heading --}}
-                    <h2 class="font-serif text-xl text-black mb-6">SHOP NOW</h2>
+                    <h2 class="font-serif text-lg lg:text-xl text-black mb-6">SHOP NOW</h2>
 
                     {{-- Images grid --}}
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
@@ -126,7 +119,7 @@
                     </div>
 
                     <div class="mt-10">
-                        <a href="/list-products" class="text-sm underline text-black hover:text-gray-700">
+                        <a href="products/list-products" class="text-sm underline text-black hover:text-gray-700">
                             View All
                         </a>
                     </div>
@@ -134,9 +127,9 @@
             </section>
 
             {{-- Carousel (Alpine + Tailwind) --}}
-            <section class="mt-10 py-10">
+            <section class="mt-8 py-10">
                 {{-- Heading --}}
-                <h2 class="text-xl font-serif text-black text-center mb-6">Our Collections</h2>
+                <h2 class="text-lg lg:text-xl font-serif tracking-wide text-black text-center mb-6">COLLECTIONS</h2>
                 <div x-data="carousel()" x-init="init()" x-on:mouseenter="pause()" x-on:mouseleave="play()" class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="relative overflow-hidden rounded-lg">
                         {{-- Slides wrapper (flex, will be translated) --}}
@@ -195,11 +188,11 @@
                     <div class="absolute inset-0 bg-[#F3EBDC]/30 pointer-events-none z-0"></div>
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                         <div class="text-black max-w-screen-xl mx-auto text-center px-4 sm:px-6 lg:px-8 font-serif text-neutral-900/90">
-                            <h2 class="font-serif sm:text-lg md:text-xl lg:text-2xl mb-3">
+                            <h2 class="font-serif text-xl md:text-2xl mb-3">
                                 The Art of Natural Elegance
                             </h2>
 
-                            <p class="font-sans text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+                            <p class="font-sans text-xs md:text-base leading-relaxed max-w-xl mx-auto">
                                 True beauty doesn't shout — it glows.
                                 Each Lombok pearl is chosen for its natural luster, untouched by artificial perfection,
                                 bringing you jewellery that feels pure and timeless.
@@ -208,7 +201,6 @@
                     </div>
                 </div>
             </section>
-        @include('components.newsletter')
         @include('components.footer')
     </body>
        

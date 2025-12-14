@@ -39,16 +39,16 @@
         {{-- RIGHT DETAILS --}}
         <aside class="py-6">
 
-            <h1 class="text-4xl mb-4">Sangria Brooch</h1>
+            <h1 class="font-serif text-xl md:text-2xl mb-4">Sangria Brooch</h1>
 
-            <p class="text-gray-700 mb-6 leading-relaxed">
+            <p class="font-sans text-gray-700 mb-6  text-xs md:text-base leading-relaxed">
                 Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
             </p>
 
-            <div class="text-2xl mb-6">RM 42.99</div>
+            <div class="text-xl md:text-xl mb-6">RM 42.99</div>
 
-            <div class="text-sm text-gray-600 mb-6 space-y-2">
+            <div class="font-sans text-xs md:text-base text-gray-600 mb-6 space-y-2">
                 <p>Details : Pearl, Silver sterling, diamonds</p>
                 <p>Care Instructions : Store in a dry cool place, avoid harsh substance such as perfumes, liquid and water</p>
             </div>
@@ -97,7 +97,7 @@
     <section class="mx-10 bg-cream-50 py-12" style="background-color:#fbf6ec;">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-serif">
             {{-- Heading --}}
-                <h2 class="text-xl font-semibold text-black mb-6">Related Products</h2>
+                <h2 class="text-xl md:text-2xl font-serif text-black mb-6">Related Products</h2>
 
             {{-- Images grid --}}
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
@@ -145,7 +145,7 @@
             {{-- Carousel (Alpine + Tailwind) --}}
             <section class="mt-10 py-10">
                 {{-- Heading --}}
-                <h2 class="text-xl font-bold tracking-widest text-black text-center mb-6">Our Collections</h2>
+                <h2 class="text-xl md:text-2xl text-black text-center mb-6">Collections</h2>
                 <div x-data="carousel()" x-init="init()" x-on:mouseenter="pause()" x-on:mouseleave="play()" class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="relative overflow-hidden rounded-lg">
                         {{-- Slides wrapper (flex, will be translated) --}}
@@ -253,7 +253,6 @@
             }
         }
     </script>
-        @include('components.newsletter')
         @include('components.footer')
 </body>
 </html>

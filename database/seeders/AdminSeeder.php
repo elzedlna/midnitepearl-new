@@ -2,13 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
-        Admin::factory()->count(2)->create();
+        DB::table('admins')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@midnitepearl.com',
+            'password' => Hash::make('password123'),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

@@ -26,7 +26,7 @@ services:
     image: mysql:8.0
     container_name: laravel_db
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: midnitepearl
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: laravel
       MYSQL_PASSWORD: laravel
