@@ -49,12 +49,7 @@
 
         {{-- Cart (small) --}}
         <div class="ml-2">
-          <a href="{{ Route::has('cart.index') ? route('cart.index') : url('/cart') }}" class="text-gray-700 hover:text-gray-900 p-2 rounded-md inline-flex items-center">
-            <span class="sr-only">View cart</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 6h14l-2-6M10 21a1 1 0 100-2 1 1 0 000 2zM18 21a1 1 0 100-2 1 1 0 000 2z"/>
-            </svg>
-          </a>
+          <livewire:cart />
         </div>
       </div>
     </div>
@@ -73,14 +68,17 @@
       {{-- mobile bottom row: currency + cart --}}
       <div class="mt-4 border-t border-gray-100 pt-4 flex items-center justify-between">
         <div class="text-sm font-serif">RM MYR</div>
-        <a href="{{ Route::has('cart.index') ? route('cart.index') : url('/cart') }}" class="inline-flex items-center gap-2 text-sm text-gray-700 hover:opacity-80">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="9" cy="20" r="1" />
-            <circle cx="20" cy="20" r="1" />
-          </svg>
-          Cart
-        </a>
+          <button 
+            wire:click="$dispatch('toggle-cart')"
+            class="inline-flex items-center gap-2 text-sm text-gray-700 hover:opacity-80"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="9" cy="20" r="1" />
+              <circle cx="20" cy="20" r="1" />
+            </svg>
+            Cart
+          </button>
       </div>
     </div>
   </div>

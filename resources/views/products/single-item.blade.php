@@ -24,55 +24,9 @@
 <body>
 
     {{-- CONTENT --}}
-    <main class="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <livewire:product-detail :id="$id" />
 
-        {{-- LEFT IMAGES --}}
-        <section>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="square"><img src="https://i.imgur.com/0D2QZfH.jpg" class="w-full h-full object-cover"></div>
-                <div class="square"><img src="https://i.imgur.com/8KqN4bM.jpg" class="w-full h-full object-cover"></div>
-                <div class="square"><img src="https://i.imgur.com/1R7XQ0b.jpg" class="w-full h-full object-cover"></div>
-                <div class="square"><img src="https://i.imgur.com/qB6b7sF.jpg" class="w-full h-full object-cover"></div>
-            </div>
-        </section>
-
-        {{-- RIGHT DETAILS --}}
-        <aside class="py-6">
-
-            <h1 class="font-serif text-xl md:text-2xl mb-4">Sangria Brooch</h1>
-
-            <p class="font-sans text-gray-700 mb-6  text-xs md:text-base leading-relaxed">
-                Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
-            </p>
-
-            <div class="text-xl md:text-xl mb-6">RM 42.99</div>
-
-            <div class="font-sans text-xs md:text-base text-gray-600 mb-6 space-y-2">
-                <p>Details : Pearl, Silver sterling, diamonds</p>
-                <p>Care Instructions : Store in a dry cool place, avoid harsh substance such as perfumes, liquid and water</p>
-            </div>
-
-            {{-- Quantity / Wishlist / Cart --}}
-            <div class="flex items-center gap-4 mt-6">
-                <div class="inline-flex items-center border border-gray-300 rounded">
-                    <button id="dec" class="px-4 py-2 text-lg">−</button>
-                    <div id="qty" class="px-6">1</div>
-                    <button id="inc" class="px-4 py-2 text-lg">+</button>
-                </div>
-
-                <button id="wish" class="border border-gray-300 rounded px-4 py-2" type="button">♡</button>
-
-                <button id="add" class="ml-auto bg-[#4bc9bd] hover:bg-[#38b3a9] text-white px-6 py-3 rounded">
-                    Add to cart
-                </button>
-            </div>
-
-            <div id="msg" class="mt-4 text-sm text-green-700 hidden"></div>
-        </aside>
-    </main>
-
-    {{-- FOOTER PROMO --}}
+    {{-- PROMO --}}
     <section class="bg-[#6fd1c6] text-white py-12">
         <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
 

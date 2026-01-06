@@ -71,33 +71,67 @@
             </div>
         </div>
 
+            {{-- Success Message --}}
+            @if(session()->has('cart-message'))
+                <div class="mb-6 max-w-md mx-auto">
+                    <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-center">
+                        {{ session('cart-message') }}
+                    </div>
+                </div>
+            @endif
+
             {{-- Products Grid: 3 columns desktop, 2 columns mobile --}}
             <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
                 @forelse($products as $product)
-                    <a href="{{ route('products.show', $product->id) }}" 
-                       class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md 
+                    <div class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md 
                        hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         
                         {{-- Product Image --}}
-                        <div class="relative w-full pt-[100%] overflow-hidden bg-gray-100">
-                            <img 
-                                src="{{ asset('storage/' . $product->image) }}"
-                                alt="{{ $product->name }}"
-                                class="absolute top-0 left-0 w-full h-full object-cover 
-                                group-hover:scale-105 transition-transform duration-300"
-                            >
-                        </div>
+                        <a href="{{ route('products.show', $product['id']) }}" class="relative w-full pt-[100%] overflow-hidden bg-gray-100">
+                            @if(file_exists(public_path('storage/' . $product['image'])))
+                                <img 
+                                    src="{{ asset('storage/' . $product['image']) }}"
+                                    alt="{{ $product['name'] }}"
+                                    class="absolute top-0 left-0 w-full h-full object-cover 
+                                    group-hover:scale-105 transition-transform duration-300"
+                                >
+                            @else
+                                {{-- Placeholder for demo --}}
+                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                                    <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                            @endif
+                        </a>
 
                         {{-- Product Info --}}
                         <div class="p-5 flex flex-col flex-grow">
-                            <h3 class="font-sans text-base md:text-lg text-[#333] mb-2 line-clamp-2">
-                                {{ $product->name }}
-                            </h3>
-                            <p class="font-sans text-lg md:text-xl font-semibold text-[#7DD4CA] mt-auto">
-                                RM {{ number_format($product->price, 2) }}
+                            <a href="{{ route('products.show', $product['id']) }}">
+                                <h3 class="font-sans text-base md:text-lg text-[#333] mb-2 line-clamp-2 hover:text-[#7DD4CA] transition-colors">
+                                    {{ $product['name'] }}
+                                </h3>
+                            </a>
+                            <p class="font-sans text-lg md:text-xl font-semibold text-[#7DD4CA] mb-4">
+                                RM {{ number_format($product['price'], 2) }}
                             </p>
+
+                            {{-- Add to Cart Button --}}
+                            <button
+                                wire:click="$dispatch('addToCart', {
+                                    id: {{ $product['id'] }},
+                                    name: '{{ addslashes($product['name']) }}',
+                                    price: {{ $product['price'] }},
+                                    image: '{{ $product['image'] ?? '' }}'
+                                })"
+                                class="w-full mt-auto px-4 py-2.5 bg-black text-white font-sans text-sm
+                                hover:bg-teal-400 hover:text-black transition-colors duration-300
+                                focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
+                            >
+                                Add to Cart
+                            </button>
                         </div>
-                    </a>
+                    </div>
                 @empty
                     <div class="col-span-full text-center py-16">
                         <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

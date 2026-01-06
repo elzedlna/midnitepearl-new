@@ -61,12 +61,7 @@
 
         {{-- Cart --}}
         <div class="ml-2">
-          <a href="{{ Route::has('cart.index') ? route('cart.index') : url('/cart') }}" class="text-gray-700 hover:text-gray-900 p-2 rounded-md">
-            <span class="sr-only">View cart</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 6h14l-2-6M10 21a1 1 0 100-2 1 1 0 000 2zM18 21a1 1 0 100-2 1 1 0 000 2z"/>
-            </svg>
-          </a>
+          <livewire:cart />
         </div>
       </div>
     </div>

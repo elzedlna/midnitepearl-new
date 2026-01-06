@@ -57,6 +57,11 @@ Route::prefix('admin')->group(function () {
 //Route for Category: Products
 Route::get('/products/single-item', function () {return view('products.single-item');});
 Route::get('/products/list-products', function () {return view('products.list-products');});
+Route::get('/products/product-list', function () {return view('products.product-list');});
+Route::get('/products/{id}', function($id) {})->name('products.show');
+Route::get('/products/{id}', function($id) {
+    return view('products.single-item', ['id' => $id]);
+})->name('products.show');
 
 
 
